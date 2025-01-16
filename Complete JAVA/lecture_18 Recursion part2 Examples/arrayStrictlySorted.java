@@ -6,7 +6,7 @@ public class arrayStrictlySorted {
             System.out.println("Array is Sorted");
             return;
         }
-        if (arr[index] > arr[index + 1]) {
+        if (arr[index] >= arr[index + 1]) {
             System.out.println("Array is not Sorted");
             return;
         }
@@ -15,7 +15,7 @@ public class arrayStrictlySorted {
 
     public static void main(String[] args) {
         arrayStrictlySorted obj = new arrayStrictlySorted();
-        int[] arr1 = { 10, 30, 20, 40, 50 };
+        int[] arr1 = { 10, 30, 30, 40, 50 };
         int[] arr2 = { 10, 20, 30, 40, 50 };
 
         obj.checkArray(arr1, 0);
