@@ -1,3 +1,4 @@
+// sample java code
 class PermutationString {
     void printPermutation(String str, String permutation) {
         if (str.length() == 0) {
