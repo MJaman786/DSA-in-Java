@@ -28,4 +28,21 @@ output : 'abc' 'ab' 'ac' 'a' 'bc' 'b' 'c' ''
     /  \     /  \      /   \    /   \
  "abc" "ab" "ac" "a" "bc"  "b" "c"  "" (id=3)
 
+subSequence("abc", 0, " ")
+├── Include 'a' → subSequence("abc", 1, " a")
+│   ├── Include 'b' → subSequence("abc", 2, " ab")
+│   │   ├── Include 'c' → subSequence("abc", 3, " abc") → print
+│   │   └── Exclude 'c' → subSequence("abc", 3, " ab")  → print
+│   └── Exclude 'b' → subSequence("abc", 2, " a")
+│       ├── Include 'c' → subSequence("abc", 3, " ac")  → print
+│       └── Exclude 'c' → subSequence("abc", 3, " a")   → print
+└── Exclude 'a' → subSequence("abc", 1, " ")
+    ├── Include 'b' → subSequence("abc", 2, " b")
+    │   ├── Include 'c' → subSequence("abc", 3, " bc")  → print
+    │   └── Exclude 'c' → subSequence("abc", 3, " b")   → print
+    └── Exclude 'b' → subSequence("abc", 2, " ")
+        ├── Include 'c' → subSequence("abc", 3, " c")   → print
+        └── Exclude 'c' → subSequence("abc", 3, " ")    → print
+
+
 */ 
